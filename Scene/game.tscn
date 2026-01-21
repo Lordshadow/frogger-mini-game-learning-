@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvloiyp5vdfoi"]
+
+[ext_resource type="Script" uid="uid://335qtx8a0ugv" path="res://Scripts/game.gd" id="1_03iqk"]
+[ext_resource type="Texture2D" uid="uid://doghmovcgeltw" path="res://graphics/map.png" id="1_mhtsl"]
+[ext_resource type="PackedScene" uid="uid://bycyrw43o2u20" path="res://Scene/player.tscn" id="2_w51g1"]
+[ext_resource type="PackedScene" uid="uid://mfpiba62phj1" path="res://Scene/tree.tscn" id="3_4jv7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03iqk"]
+size = Vector2(384, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jv7b"]
+size = Vector2(8, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihreq"]
+size = Vector2(382, 112)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_03iqk")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("1_mhtsl")
+
+[node name="Borders" type="Node2D" parent="."]
+position = Vector2(0, 320)
+
+[node name="Top_Barrier" type="StaticBody2D" parent="Borders"]
+position = Vector2(0, -640)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Top_Barrier"]
+shape = SubResource("RectangleShape2D_03iqk")
+
+[node name="Bottom_Barriers" type="StaticBody2D" parent="Borders"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bottom_Barriers"]
+shape = SubResource("RectangleShape2D_03iqk")
+
+[node name="Right_Barrier" type="StaticBody2D" parent="Borders"]
+position = Vector2(196, -320)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right_Barrier"]
+shape = SubResource("RectangleShape2D_4jv7b")
+
+[node name="Left_Barrier" type="StaticBody2D" parent="Borders"]
+position = Vector2(-196, -320)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left_Barrier"]
+shape = SubResource("RectangleShape2D_4jv7b")
+
+[node name="FInishArea2D" type="Area2D" parent="Borders"]
+position = Vector2(-108, -525)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/FInishArea2D"]
+position = Vector2(108, -44)
+shape = SubResource("RectangleShape2D_ihreq")
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="CarTimer" type="Timer" parent="Timer"]
+autostart = true
+
+[node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Objects" instance=ExtResource("2_w51g1")]
+position = Vector2(53, 163)
+
+[node name="Objects" parent="Objects" instance=ExtResource("3_4jv7b")]
+position = Vector2(33, 206)
+
+[node name="Objects2" parent="Objects" instance=ExtResource("3_4jv7b")]
+position = Vector2(116, 230)
+
+[node name="Objects3" parent="Objects" instance=ExtResource("3_4jv7b")]
+position = Vector2(38, 250)
+
+[node name="CarStartPosition" type="Node2D" parent="."]
+position = Vector2(-7, -4)
+
+[node name="Marker2D" type="Marker2D" parent="CarStartPosition"]
+position = Vector2(-182, 7)
+
+[node name="Marker2D2" type="Marker2D" parent="CarStartPosition"]
+position = Vector2(-182, 95)
+
+[node name="Marker2D3" type="Marker2D" parent="CarStartPosition"]
+position = Vector2(-182, 119)
+
+[node name="Marker2D4" type="Marker2D" parent="CarStartPosition"]
+position = Vector2(196, 141)
+
+[node name="Marker2D5" type="Marker2D" parent="CarStartPosition"]
+position = Vector2(197, 166)
+
+[node name="Marker2D6" type="Marker2D" parent="CarStartPosition"]
+position = Vector2(196, -22)
+
+[node name="Marker2D7" type="Marker2D" parent="CarStartPosition"]
+position = Vector2(-182, -47)
+
+[node name="Marker2D8" type="Marker2D" parent="CarStartPosition"]
+position = Vector2(-181, -90)
+
+[node name="Marker2D9" type="Marker2D" parent="CarStartPosition"]
+position = Vector2(195, -112)
+
+[connection signal="body_entered" from="Borders/FInishArea2D" to="." method="_on_f_inish_area_2d_body_entered"]
+[connection signal="timeout" from="Timer/CarTimer" to="." method="_on_car_timer_timeout"]

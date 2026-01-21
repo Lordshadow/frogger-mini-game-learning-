@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdowy8tq7yu0o"]
+
+[ext_resource type="Texture2D" uid="uid://d0dya2slufckd" path="res://graphics/cars/green.png" id="1_cd047"]
+[ext_resource type="Script" uid="uid://spf4vcl1k6me" path="res://Scripts/car.gd" id="1_d7vpe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7vpe"]
+size = Vector2(22, 9.5)
+
+[node name="Car" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_d7vpe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cd047")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d7vpe")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
