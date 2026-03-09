@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://dwpcxkt6ab21o"]
+
+[ext_resource type="FontFile" uid="uid://dr201ov4c76pb" path="res://fonts/Crackman.otf" id="1_h6y6f"]
+[ext_resource type="Script" uid="uid://dqf07hdv2pls4" path="res://Scene/title.gd" id="1_nn2l1"]
+[ext_resource type="Texture2D" uid="uid://bkgrir378horu" path="res://graphics/player/player_simple.png" id="2_gcboo"]
+[ext_resource type="FontFile" uid="uid://hqpa84d2dqvp" path="res://fonts/Better VCR 9.0.1.ttf" id="3_nn2l1"]
+[ext_resource type="Texture2D" uid="uid://c5q0rca35wlup" path="res://graphics/check_square_grey_cross.png" id="5_xriko"]
+[ext_resource type="Texture2D" uid="uid://5p14m3t7jy1w" path="res://graphics/check_square_color_cross.png" id="7_a0o0u"]
+[ext_resource type="Texture2D" uid="uid://ichhiha1gjv0" path="res://graphics/icon_repeat_outline.svg" id="7_snarr"]
+[ext_resource type="Texture2D" uid="uid://k8wlp08l4pac" path="res://graphics/icon_repeat_dark.svg" id="8_pkr7l"]
+[ext_resource type="Texture2D" uid="uid://me080km2rlft" path="res://graphics/icon_repeat_light.svg" id="9_jiern"]
+
+[node name="Title" type="Control" unique_id=955239882]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nn2l1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=179371453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 11.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8117647, 0.42352942, 0.6156863, 1)
+
+[node name="Label" type="Label" parent="." unique_id=983674958]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.5
+offset_top = -84.5
+offset_right = 352.5
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_h6y6f")
+theme_override_font_sizes/font_size = 140
+text = "Car Game"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=517341602]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gcboo")
+
+[node name="Label2" type="Label" parent="." unique_id=299841099]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = 250.0
+offset_right = 61.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_nn2l1")
+theme_override_font_sizes/font_size = 30
+text = "High Score : 123"
+
+[node name="quit_button" type="TextureButton" parent="." unique_id=1739356860]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 135.0
+offset_top = 187.0
+offset_right = 209.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_xriko")
+texture_pressed = ExtResource("7_a0o0u")
+texture_hover = ExtResource("5_xriko")
+stretch_mode = 0
+
+[node name="restart_button" type="TextureButton" parent="." unique_id=482598842]
+texture_filter = 4
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = 198.0
+offset_right = -109.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_snarr")
+texture_pressed = ExtResource("8_pkr7l")
+texture_hover = ExtResource("9_jiern")
+stretch_mode = 5
+
+[connection signal="pressed" from="quit_button" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]

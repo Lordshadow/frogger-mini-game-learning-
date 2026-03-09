@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bycyrw43o2u20"]
+[gd_scene format=3 uid="uid://bycyrw43o2u20"]
 
 [ext_resource type="Script" uid="uid://csflc70yat00p" path="res://Scripts/player.gd" id="1_y8w33"]
 [ext_resource type="Texture2D" uid="uid://c4q6c7mxqh78h" path="res://graphics/player/player_tileset.png" id="2_y8w33"]
@@ -96,13 +96,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8w33"]
 size = Vector2(10, 8)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=1446584351]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_y8w33")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=770507919]
+zoom = Vector2(5, 5)
 limit_left = -193
 limit_top = -320
 limit_right = 193
@@ -110,11 +110,11 @@ limit_bottom = 320
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1398463660]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_r6jsd")
 animation = &"down"
 autoplay = "left"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2024926730]
 shape = SubResource("RectangleShape2D_y8w33")
